@@ -401,6 +401,13 @@ footer{
   border-top:1px solid var(--line);
   padding:34px 0;font-size:13.5px;color:var(--dim);
 }
+.foot-contact{
+  margin-bottom:20px;padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);font-size:14px;
+}
+.foot-contact a{color:var(--violet-soft);text-decoration:none;font-weight:500}
+.foot-contact a:hover{text-decoration:underline}
 .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot a{color:var(--muted);text-decoration:none}
 .foot a:hover{color:var(--text)}
