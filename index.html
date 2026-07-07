@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distraction Blocker — the focus app you can't talk your way out of</title>
+<meta name="description" content="Free Windows Pomodoro app that blocks distracting websites and apps. Once a focus session starts, there's no off switch until you restart your PC.">
+<meta property="og:title" content="Distraction Blocker — free focus app for Windows">
+<meta property="og:description" content="Pomodoro sessions that block apps and websites. No escape during focus. 100% free.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0b15;
+    --ink-2:#131020;
+    --panel:#1a1528;
+    --panel-2:#221b35;
+    --line:rgba(155,135,220,.14);
+    --violet:#8b5cf6;
+    --violet-soft:#a78bfa;
+    --violet-deep:#2b1e45;
+    --amber:#f5b06a;
+    --amber-deep:#3a2a1c;
+    --text:#f2effa;
+    --muted:#9c93b8;
+    --dim:#6f6690;
+    --radius:14px;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --ui:"Segoe UI",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--violet);color:#fff}
+  a{color:inherit}
+  img{max-width:100%}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- ambient background ---------- */
+  .aurora{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(52vw 40vh at 78% -6%, rgba(139,92,246,.16), transparent 60%),
+      radial-gradient(40vw 34vh at 8% 22%, rgba(139,92,246,.08), transparent 60%),
+      var(--ink);
+    transition:background 1.2s ease;
+  }
+  body.phase-break .aurora{
+    background:
+      radial-gradient(52vw 40vh at 78% -6%, rgba(245,176,106,.13), transparent 60%),
+      radial-gradient(40vw 34vh at 8% 22%, rgba(245,176,106,.06), transparent 60%),
+      var(--ink);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(13,11,21,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+  .logo svg{flex:none}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
+  .nav-links a{text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--violet);color:#fff;text-decoration:none;
+    font-weight:600;font-size:14.5px;font-family:var(--body);
+    padding:10px 20px;border-radius:10px;border:none;cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    box-shadow:0 4px 20px rgba(139,92,246,.28);
+  }
+  .btn:hover{transform:translateY(-2px);background:#9d74f8;box-shadow:0 8px 30px rgba(139,92,246,.42)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible,a:focus-visible{outline:2px solid var(--violet-soft);outline-offset:3px}
+  .btn.big{font-size:16.5px;padding:16px 32px;border-radius:13px}
+  .btn.ghost{background:transparent;box-shadow:none;border:1px solid var(--line);color:var(--muted)}
+  .btn.ghost:hover{color:var(--text);border-color:rgba(155,135,220,.4);background:rgba(139,92,246,.06)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--violet-soft);
+    border:1px solid rgba(139,92,246,.35);border-radius:99px;
+    padding:6px 14px;margin-bottom:22px;
+    background:rgba(139,92,246,.08);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--violet);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+  h1{
+    font-family:var(--display);
+    font-size:clamp(38px,5.2vw,60px);
+    font-weight:800;line-height:1.04;letter-spacing:-.025em;
+    margin-bottom:22px;
+  }
+  h1 .accent{color:var(--violet-soft)}
+  h1 .strike{position:relative;white-space:nowrap}
+  h1 .strike::after{
+    content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.09em;
+    background:var(--violet);border-radius:99px;
+    transform:scaleX(0);transform-origin:left;
+    animation:strike .5s .9s ease forwards;
+  }
+  @keyframes strike{to{transform:scaleX(1)}}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:46ch;margin-bottom:34px}
+  .hero p.lead strong{color:var(--text);font-weight:600}
+  .hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .cta-note{font-size:13px;color:var(--dim);margin-top:14px;display:flex;gap:14px;flex-wrap:wrap}
+  .cta-note span{display:inline-flex;align-items:center;gap:6px}
+  .cta-note svg{color:var(--violet-soft)}
+
+  /* ---------- app demo mockup ---------- */
+  .demo-stage{position:relative;perspective:1200px}
+  .demo-glow{
+    position:absolute;inset:8% 4%;border-radius:40px;z-index:-1;
+    background:radial-gradient(closest-side, rgba(139,92,246,.32), transparent);
+    filter:blur(30px);
+    transition:background 1.2s ease;
+  }
+  body.phase-break .demo-glow{background:radial-gradient(closest-side, rgba(245,176,106,.26), transparent)}
+  .app{
+    font-family:var(--ui);
+    width:min(380px,100%);margin:0 auto;
+    background:#161225;
+    border:1px solid rgba(155,135,220,.18);
+    border-radius:12px;
+    box-shadow:0 40px 90px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.04) inset;
+    overflow:hidden;
+    animation:float 7s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-10px) rotateX(1.2deg)}}
+  .titlebar{
+    display:flex;align-items:center;gap:9px;
+    background:#fff;color:#111;font-size:12px;
+    padding:7px 12px;
+  }
+  .titlebar .win-btns{margin-left:auto;display:flex;gap:16px;color:#444;font-size:11px}
+  .app-body{padding:20px 20px 16px}
+  .app-h{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .app-sub{font-size:12px;color:#9c93b8;margin-bottom:14px}
+  .timer-card{
+    border-radius:12px;padding:26px 16px 20px;text-align:center;
+    background:linear-gradient(160deg,#2b1e45,#1c1430);
+    transition:background 1s ease;
+    margin-bottom:16px;
+  }
+  .app.break .timer-card{background:linear-gradient(160deg,#3a2a1c,#241a12)}
+  .phase-label{
+    font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--violet-soft);
+    transition:color .8s ease;
+  }
+  .app.break .phase-label{color:var(--amber)}
+  .clock{font-size:46px;font-weight:200;letter-spacing:.02em;line-height:1.15;font-variant-numeric:tabular-nums}
+  .cycle{font-size:11.5px;color:#9c93b8;margin-top:2px}
+  .knobs{display:flex;justify-content:space-between;gap:10px;margin-bottom:16px}
+  .knob{flex:1;text-align:center}
+  .knob label{font-size:10.5px;color:#9c93b8;display:block;margin-bottom:4px}
+  .knob .val{
+    background:#0f0c1a;border:1px solid rgba(155,135,220,.16);border-radius:7px;
+    font-size:14px;padding:6px 0;font-variant-numeric:tabular-nums;
+  }
+  .list-h{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:8px}
+  .chip{font-size:10.5px;background:#241d38;border:1px solid rgba(155,135,220,.16);border-radius:6px;padding:3px 9px;color:#c9c1e2}
+  .block-list{
+    background:#0f0c1a;border:1px solid rgba(155,135,220,.12);border-radius:9px;
+    padding:8px 12px;margin-bottom:14px;font-size:12.5px;
+  }
+  .block-item{display:flex;align-items:center;gap:8px;padding:4px 0;color:#d9d3ec;transition:color .5s}
+  .block-item .lock{width:13px;height:13px;flex:none;color:#584f78;transition:color .5s, transform .3s}
+  .app.focus .block-item{color:#8a80a8;text-decoration:line-through;text-decoration-color:rgba(139,92,246,.55)}
+  .app.focus .block-item .lock{color:var(--violet-soft);transform:scale(1.12)}
+  .start-btn{
+    width:100%;border:none;border-radius:10px;padding:13px;
+    font-size:15px;font-weight:600;font-family:var(--ui);color:#fff;
+    background:var(--violet);cursor:default;
+    transition:background .6s ease, color .6s ease;
+  }
+  .app.focus .start-btn{background:#241d38;color:#6f6690}
+  .app.break .start-btn{background:#241d38;color:#d9d3ec}
+  .stop-hint{font-size:10.5px;color:#6f6690;text-align:center;margin-top:7px;min-height:15px}
+
+  /* windows toast */
+  .toast{
+    position:absolute;right:-14px;bottom:66px;width:290px;
+    font-family:var(--ui);
+    background:rgba(28,24,42,.92);backdrop-filter:blur(10px);
+    border:1px solid rgba(155,135,220,.25);
+    border-radius:10px;padding:14px 16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+    display:flex;gap:12px;align-items:flex-start;
+    opacity:0;transform:translateX(24px);
+    transition:opacity .45s ease, transform .45s cubic-bezier(.2,.9,.3,1.2);
+    pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateX(0)}
+  .toast .t-icon{
+    flex:none;width:34px;height:34px;border-radius:8px;
+    display:grid;place-items:center;color:#fff;background:var(--violet);
+    transition:background .6s;
+  }
+  .toast.break-toast .t-icon{background:var(--amber);color:#241a12}
+  .toast .t-title{font-size:13px;font-weight:700}
+  .toast .t-body{font-size:12px;color:var(--muted);line-height:1.45}
+  .toast .t-app{font-size:10px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+  /* ---------- sections ---------- */
+  section{padding:96px 0}
+  .sec-eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--violet-soft);margin-bottom:14px;
+  }
+  h2{
+    font-family:var(--display);
+    font-size:clamp(28px,3.6vw,42px);
+    font-weight:800;letter-spacing:-.02em;line-height:1.1;
+    margin-bottom:16px;
+  }
+  .sec-lead{color:var(--muted);font-size:17px;max-width:58ch}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- the lock ---------- */
+  .lock-sec{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(139,92,246,.05), transparent 55%);
+    text-align:center;
+  }
+  .lock-sec .big{
+    font-family:var(--display);
+    font-size:clamp(30px,4.6vw,54px);
+    font-weight:800;letter-spacing:-.025em;line-height:1.12;
+    max-width:21ch;margin:0 auto 20px;
+  }
+  .lock-sec .big em{font-style:normal;color:var(--violet-soft)}
+  .lock-sec p{color:var(--muted);max-width:62ch;margin:0 auto 8px;font-size:17px}
+  .lock-badge{
+    width:72px;height:72px;margin:0 auto 28px;border-radius:20px;
+    display:grid;place-items:center;color:var(--violet-soft);
+    background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);
+    box-shadow:0 0 60px rgba(139,92,246,.25);
+  }
+  .lock-fine{font-size:13.5px;color:var(--dim);margin-top:18px}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px}
+  .step{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;position:relative;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .step:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.4);background:var(--panel-2)}
+  .step .n{
+    font-family:var(--display);font-weight:800;font-size:15px;
+    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+    background:rgba(139,92,246,.14);color:var(--violet-soft);
+    margin-bottom:18px;
+  }
+  .step:last-child .n{background:rgba(245,176,106,.14);color:var(--amber)}
+  .step h3{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{font-size:14px;color:var(--muted);line-height:1.55}
+
+  /* ---------- features ---------- */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+  .feat{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .feat:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.4)}
+  .feat .ic{
+    width:44px;height:44px;border-radius:12px;margin-bottom:18px;
+    display:grid;place-items:center;color:var(--violet-soft);
+    background:rgba(139,92,246,.12);
+  }
+  .feat.warm .ic{color:var(--amber);background:rgba(245,176,106,.1)}
+  .feat h3{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .feat p{font-size:14.5px;color:var(--muted)}
+
+  /* ---------- free banner ---------- */
+  .free-strip{
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin-top:56px;padding:22px 28px;
+    border:1px dashed rgba(139,92,246,.4);border-radius:var(--radius);
+    background:rgba(139,92,246,.06);
+    font-size:15.5px;color:var(--muted);text-align:center;
+  }
+  .free-strip b{
+    font-family:var(--display);color:var(--text);font-size:17px;font-weight:700;
+  }
+  .free-tag{
+    background:var(--violet);color:#fff;font-weight:700;font-size:12px;
+    letter-spacing:.1em;border-radius:6px;padding:4px 10px;
+  }
+
+  /* ---------- faq ---------- */
+  .faq-list{max-width:720px;margin:44px auto 0}
+  details{
+    border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    margin-bottom:12px;overflow:hidden;
+  }
+  summary{
+    cursor:pointer;list-style:none;padding:18px 22px;
+    font-weight:600;font-size:15.5px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    transition:color .2s;
+  }
+  summary:hover{color:var(--violet-soft)}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{flex:none;transition:transform .3s ease;color:var(--violet-soft)}
+  details[open] .plus{transform:rotate(45deg)}
+  details .a{padding:0 22px 20px;color:var(--muted);font-size:14.5px;max-width:60ch}
+
+  /* ---------- final cta ---------- */
+  .final{
+    text-align:center;
+    border-top:1px solid var(--line);
+    background:
+      radial-gradient(46vw 30vh at 50% 0%, rgba(139,92,246,.14), transparent 65%);
+  }
+  .final h2{max-width:18ch;margin:0 auto 16px}
+  .final .sec-lead{margin:0 auto 36px}
+  .dl-meta{margin-top:18px;font-size:13px;color:var(--dim)}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0;font-size:13.5px;color:var(--dim);
+  }
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--text)}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:64px;padding-top:56px;text-align:center}
+    .hero p.lead{margin-inline:auto}
+    .hero-cta,.cta-note{justify-content:center}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .toast{right:0}
+  }
+  @media (max-width:640px){
+    section{padding:72px 0}
+    .nav-links{display:none}
+    .steps,.feat-grid{grid-template-columns:1fr}
+    .toast{position:static;width:100%;margin-top:14px;transform:translateY(10px)}
+    .toast.show{transform:none}
+  }
+  @media (max-width:420px){
+    .logo{font-size:15px}
+    .nav .btn{padding:9px 14px;font-size:13.5px}
+    h1{font-size:34px}
+    .btn.big{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#8b5cf6"/><circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="8"/><line x1="50" y1="50" x2="50" y2="32" stroke="#fff" stroke-width="8" stroke-linecap="round"/></svg>
+      Distraction Blocker
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="DistractionBlockerSetup.exe" download>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Free Windows app</span>
+      <h1>Your focus,<br><span class="strike">your excuses</span> —<br><span class="accent">locked out.</span></h1>
+      <p class="lead">
+        Distraction Blocker runs Pomodoro focus sessions that block the websites and apps you choose.
+        And here's the twist: <strong>while a focus session is running, the blocker cannot be turned off</strong> —
+        the only way out is restarting your PC.
+      </p>
+      <div class="hero-cta">
+        <a class="btn big" href="DistractionBlockerSetup.exe" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download free for Windows
+        </a>
+        <a class="btn big ghost" href="#how">See how it works</a>
+      </div>
+      <div class="cta-note">
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>100% free</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No account needed</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Windows 10 / 11</span>
+      </div>
+    </div>
+
+    <!-- live app demo -->
+    <div class="demo-stage" aria-label="Animated preview of the Distraction Blocker app">
+      <div class="demo-glow" aria-hidden="true"></div>
+      <div class="app" id="app">
+        <div class="titlebar">
+          <svg width="13" height="13" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#8b5cf6"/><circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="8"/><line x1="50" y1="50" x2="50" y2="32" stroke="#fff" stroke-width="8" stroke-linecap="round"/></svg>
+          Distraction Blocker
+          <span class="win-btns"><span>—</span><span>▢</span><span>✕</span></span>
+        </div>
+        <div class="app-body">
+          <div class="app-h">Distraction Blocker</div>
+          <div class="app-sub">Stay focused during work sessions</div>
+
+          <div class="timer-card">
+            <div class="phase-label" id="phaseLabel">FOCUS</div>
+            <div class="clock" id="clock">25:00</div>
+            <div class="cycle" id="cycleLabel">Cycle 1 of 4</div>
+          </div>
+
+          <div class="knobs">
+            <div class="knob"><label>Focus (min)</label><div class="val">25</div></div>
+            <div class="knob"><label>Break (min)</label><div class="val">5</div></div>
+            <div class="knob"><label>Cycles (0=∞)</label><div class="val">4</div></div>
+          </div>
+
+          <div class="list-h">Blocked apps <span class="chip">+ Add</span></div>
+          <div class="block-list">
+            <div class="block-item"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>slack</div>
+            <div class="block-item"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>discord</div>
+          </div>
+
+          <div class="list-h">Blocked websites <span class="chip">+ Add</span></div>
+          <div class="block-list">
+            <div class="block-item"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>youtube.com</div>
+            <div class="block-item"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>instagram.com</div>
+          </div>
+
+          <button class="start-btn" id="startBtn" tabindex="-1" aria-hidden="true">Start</button>
+          <div class="stop-hint" id="stopHint"></div>
+        </div>
+      </div>
+
+      <!-- windows notification toast -->
+      <div class="toast" id="toast" role="status">
+        <div class="t-icon" id="toastIcon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
+        </div>
+        <div>
+          <div class="t-app">Distraction Blocker</div>
+          <div class="t-title" id="toastTitle">Break time 🎉</div>
+          <div class="t-body" id="toastBody">Focus session complete. Apps and websites are unlocked for 5 minutes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= THE LOCK ================= -->
+  <section class="lock-sec" id="lock">
+    <div class="wrap reveal">
+      <div class="lock-badge">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <p class="big">Once focus starts, there is <em>no off switch.</em></p>
+      <p>
+        Every other blocker has a back door — a pause button, a settings page, an uninstall.
+        Distraction Blocker doesn't. While a focus session is running, it can't be stopped, closed, or bypassed.
+        The only escape hatch is restarting your entire PC — and if you're willing to do that just to scroll,
+        that's a conversation to have with yourself.
+      </p>
+      <p class="lock-fine">Stopping is allowed only during breaks — when it's supposed to be.</p>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-eyebrow">How it works</div>
+        <h2>Four steps between you and deep work</h2>
+        <p class="sec-lead">Built on the Pomodoro technique: focused sprints, short breaks, repeat. You set the rhythm once — the app enforces it.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">1</div>
+          <h3>Set your rhythm</h3>
+          <p>Choose focus length, break length, and how many cycles to run. Set cycles to 0 for an infinite session — if you dare.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">2</div>
+          <h3>Pick your poison</h3>
+          <p>Add the websites and desktop apps that steal your time — YouTube, Instagram, Slack, games, anything.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">3</div>
+          <h3>Hit Start</h3>
+          <p>The timer begins and everything on your list goes dark. Blocked sites won't load, blocked apps won't open. No exceptions, no pause button.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">4</div>
+          <h3>Get notified, take a break</h3>
+          <p>When a focus session ends, a notification tells you break time has started — apps and sites unlock so you can breathe. Then the next cycle begins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-eyebrow">Features</div>
+        <h2>Simple on the surface. Ruthless underneath.</h2>
+        <p class="sec-lead">No dashboards, no streaks, no gamification. One window, one job: keep you working until the timer says otherwise.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg></div>
+          <h3>Pomodoro cycles</h3>
+          <p>Classic focus-and-break loops with custom durations. Run a set number of cycles or go infinite with 0.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/></svg></div>
+          <h3>Blocks websites and apps</h3>
+          <p>One list for distracting sites, one for desktop apps. Both are enforced the moment focus begins.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>No escape during focus</h3>
+          <p>The blocker can't be stopped mid-session. Quitting requires a full PC restart — friction that keeps you honest.</p>
+        </div>
+        <div class="feat warm reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+          <h3>Session notifications</h3>
+          <p>A notification pops up the moment a session ends, so you know exactly when the break starts and everything is usable again.</p>
+        </div>
+        <div class="feat warm reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <h3>Real breaks</h3>
+          <p>During breaks everything unlocks — check messages, grab coffee, watch that video. When focus resumes, the walls go back up.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Light and private</h3>
+          <p>A small native Windows app. No account, no sign-in, no data leaving your machine.</p>
+        </div>
+      </div>
+
+      <div class="free-strip reveal">
+        <span class="free-tag">FREE</span>
+        <b>Completely free — for now.</b>
+        <span>No trial, no locked features, no credit card. Download it and start focusing today.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Questions, answered</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>What if I really need to stop a focus session? <svg class="plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Restart your PC. That's the only way — and it's intentional. The friction of a full restart is what makes the commitment real. You can also stop the app freely during any break.</div>
+        </details>
+        <details>
+          <summary>Is it really free? <svg class="plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Yes — completely free for now, with every feature included. No trial period, no account, no payment details.</div>
+        </details>
+        <details>
+          <summary>How do I know when a session ends? <svg class="plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">You get a Windows notification the moment a focus session finishes, letting you know the break has started and your apps and websites are usable again. Another cycle begins automatically after the break.</div>
+        </details>
+        <details>
+          <summary>Which versions of Windows are supported? <svg class="plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">Windows 10 and Windows 11. Download the installer, run it, and you're set — no configuration needed.</div>
+        </details>
+        <details>
+          <summary>Does it track what I do? <svg class="plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+          <div class="a">No. There's no account, no analytics, and nothing leaves your machine. Your block lists and timer settings stay on your PC.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final">
+    <div class="wrap reveal">
+      <h2>Your next deep-work session starts now</h2>
+      <p class="sec-lead">Download, add your distractions to the list, and press Start. The rest takes care of itself.</p>
+      <a class="btn big" href="DistractionBlockerSetup.exe" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download free for Windows
+      </a>
+      <div class="dl-meta">DistractionBlockerSetup.exe · Free · Windows 10 / 11</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Distraction Blocker. Built for people who mean it.</span>
+    <span><a href="#how">How it works</a> · <a href="#features">Features</a> · <a href="#faq">FAQ</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- scroll reveals ---- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  /* ---- hero app demo loop ---- */
+  var app = document.getElementById("app");
+  var clock = document.getElementById("clock");
+  var phaseLabel = document.getElementById("phaseLabel");
+  var cycleLabel = document.getElementById("cycleLabel");
+  var startBtn = document.getElementById("startBtn");
+  var stopHint = document.getElementById("stopHint");
+  var toast = document.getElementById("toast");
+  var toastTitle = document.getElementById("toastTitle");
+  var toastBody = document.getElementById("toastBody");
+
+  function fmt(s){
+    var m = Math.floor(s/60), r = s%60;
+    return (m<10?"0":"")+m+":"+(r<10?"0":"")+r;
+  }
+
+  if(reduced){
+    /* static snapshot for reduced motion */
+    app.classList.add("focus");
+    phaseLabel.textContent = "FOCUS";
+    clock.textContent = "17:42";
+    startBtn.textContent = "Stop";
+    stopHint.textContent = "You can stop only during a break";
+    return;
+  }
+
+  /* The demo compresses a real pomodoro: focus counts down from 25:00
+     quickly, a break-time toast slides in, then a short break runs. */
+  var state, secondsLeft, cycle, timer;
+
+  function setPhase(phase){
+    state = phase;
+    if(phase === "focus"){
+      app.classList.add("focus"); app.classList.remove("break");
+      document.body.classList.remove("phase-break");
+      phaseLabel.textContent = "FOCUS";
+      secondsLeft = 25*60;
+      startBtn.textContent = "Stop";
+      stopHint.textContent = "You can stop only during a break";
+      cycleLabel.textContent = "Cycle "+cycle+" of 4";
+    }else{
+      app.classList.add("break"); app.classList.remove("focus");
+      document.body.classList.add("phase-break");
+      phaseLabel.textContent = "BREAK";
+      secondsLeft = 5*60;
+      startBtn.textContent = "Stop";
+      stopHint.textContent = "Break — everything is unlocked";
+      cycleLabel.textContent = "Cycle "+cycle+" of 4";
+    }
+  }
+
+  function showToast(kind){
+    if(kind === "break"){
+      toast.classList.add("break-toast");
+      toastTitle.textContent = "Break time 🎉";
+      toastBody.textContent = "Focus session complete. Apps and websites are unlocked for 5 minutes.";
+    }else{
+      toast.classList.remove("break-toast");
+      toastTitle.textContent = "Focus started";
+      toastBody.textContent = "Cycle "+cycle+" of 4 — distractions are locked. See you in 25 minutes.";
+    }
+    toast.classList.add("show");
+    setTimeout(function(){ toast.classList.remove("show"); }, 3400);
+  }
+
+  function tick(){
+    /* accelerated time: focus drains ~76s/frame-tick so a "25 min" session
+       plays out in about 20 real seconds; break plays in about 8 */
+    var drop = state === "focus" ? 76 : 38;
+    secondsLeft -= drop;
+    if(secondsLeft <= 0){
+      clock.textContent = "00:00";
+      if(state === "focus"){
+        setTimeout(function(){
+          setPhase("break");
+          showToast("break");
+        }, 600);
+      }else{
+        cycle = cycle < 4 ? cycle + 1 : 1;
+        setTimeout(function(){
+          setPhase("focus");
+          showToast("focus");
+        }, 600);
+      }
+      return;
+    }
+    clock.textContent = fmt(secondsLeft);
+  }
+
+  cycle = 1;
+  setPhase("focus");
+  clock.textContent = fmt(25*60);
+  setTimeout(function(){ showToast("focus"); }, 1600);
+  timer = setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>

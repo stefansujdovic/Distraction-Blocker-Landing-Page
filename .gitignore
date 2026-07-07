@@ -1,0 +1,6 @@
+# Installer is distributed via GitHub Releases, not committed (too large for repo)
+DistractionBlockerSetup.exe
+
+# Local app screenshots — not used by the site (app UI is recreated in HTML)
+*.PNG
+*.png
