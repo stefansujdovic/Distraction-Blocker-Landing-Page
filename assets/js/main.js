@@ -166,6 +166,10 @@
 
     function startDownload() {
       if (!config.downloadUrl) return;
+      /* Count the download as a GoatCounter event (guarded: the script is async). */
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: "download", title: "Installer download", event: true });
+      }
       var link = document.createElement("a");
       link.href = config.downloadUrl;
       link.setAttribute("download", "");
