@@ -325,6 +325,7 @@ summary::-webkit-details-marker{display:none}
 summary .plus{flex:none;transition:transform .3s ease;color:var(--violet-soft)}
 details[open] .plus{transform:rotate(45deg)}
 details .a{padding:0 22px 20px;color:var(--muted);font-size:14.5px;max-width:60ch}
+details .a a{color:var(--violet-soft);text-decoration:underline}
 
 /* ---------- final cta ---------- */
 .final{
@@ -335,6 +336,7 @@ details .a{padding:0 22px 20px;color:var(--muted);font-size:14.5px;max-width:60c
 .final h2{max-width:18ch;margin:0 auto 16px}
 .final .sec-lead{margin:0 auto 36px}
 .dl-meta{margin-top:18px;font-size:13px;color:var(--dim)}
+.dl-meta a{color:var(--violet-soft);text-decoration:underline}
 
 /* ---------- email-gate modal ---------- */
 .modal{
