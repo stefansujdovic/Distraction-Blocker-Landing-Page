@@ -8,13 +8,24 @@
   <meta name="description"
     content="Free Windows Pomodoro app that blocks distracting websites and apps. Once a focus session starts, there's no off switch until you restart your PC.">
   <meta name="theme-color" content="#0d0b15">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Stefan Sujdovic">
+  <link rel="canonical" href="https://distraction-blocker.com/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Distraction Blocker — free focus app for Windows">
   <meta property="og:description"
     content="Pomodoro sessions that block apps and websites. No escape during focus. 100% free.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://distraction-blocker.com">
+  <meta property="og:url" content="https://distraction-blocker.com/">
+  <meta property="og:image" content="https://distraction-blocker.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Distraction Blocker — free focus app for Windows">
+  <meta name="twitter:description"
+    content="Pomodoro sessions that block apps and websites. No escape during focus. 100% free.">
+  <meta name="twitter:image" content="https://distraction-blocker.com/og-image.png">
 
   <link rel="icon"
     href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
@@ -33,6 +44,83 @@
   <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
   <script data-goatcounter="https://distractionblocker.goatcounter.com/count" async
     src="//gc.zgo.at/count.js"></script>
+
+  <!-- Structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Distraction Blocker",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "UtilitiesApplication",
+        "description": "Free Windows app that runs Pomodoro focus sessions and blocks distracting apps and websites. Once a focus session starts it cannot be turned off until the PC restarts.",
+        "url": "https://distraction-blocker.com/",
+        "image": "https://distraction-blocker.com/og-image.png",
+        "downloadUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What if I really need to stop a focus session?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Restart your PC — that is the only way, and it is intentional. The friction of a full restart is what makes the commitment real. You can also stop the app freely during any break."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it really free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — completely free for now, with every feature included. No trial period, no account, and no payment details."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it safe? Why does Windows warn me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The installer is scanned clean on VirusTotal. Windows may still show a blue 'Windows protected your PC' screen that says unknown publisher — that is not a virus warning, it only means the app is not signed with a paid code-signing certificate yet. Click More info, then Run anyway."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know when a session ends?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You get a Windows notification the moment a focus session finishes, letting you know the break has started and your apps and websites are usable again. Another cycle begins automatically after the break."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which versions of Windows are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Windows 10 and Windows 11. Download the installer, run it, and you are set — no configuration needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it track what I do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There is no account, no analytics, and nothing leaves your machine. Your block lists and timer settings stay on your PC."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>

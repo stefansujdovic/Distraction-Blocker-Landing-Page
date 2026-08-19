@@ -1,0 +1,17 @@
+# Distraction Blocker
+
+> Distraction Blocker is a free Windows 10 and Windows 11 app that runs Pomodoro focus sessions and blocks distracting apps and websites. Once a focus session starts it cannot be turned off, paused, or uninstalled until the PC restarts — which makes it effective both for personal focus and as free parental-control software for kids' study time. There is no account, no subscription, and no data leaves the device.
+
+## Pages
+- [Home / focus app](https://distraction-blocker.com/): Overview, how it works, features, FAQ, and download.
+- [Parental Control](https://distraction-blocker.com/parental-control.html): How to use Distraction Blocker as free parental-control software — block games, apps, and websites during study time with no bypass until restart.
+- [Privacy Policy](https://distraction-blocker.com/privacy.html): What data is and isn't collected (privacy-friendly, no cookies).
+
+## Key facts
+- Platform: Windows 10 and Windows 11
+- Price: Free — no subscription, no account, no credit card
+- Core feature: focus sessions that block chosen apps and websites and cannot be disabled until the PC restarts
+- Breaks: apps and websites unlock automatically during scheduled breaks
+- Privacy: no account, no in-app analytics, block lists and settings stay on the device
+- Download: https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe
+- Contact: stefansujdovic@gmail.com
