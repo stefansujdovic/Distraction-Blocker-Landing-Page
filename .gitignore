@@ -4,3 +4,6 @@ DistractionBlockerSetup.exe
 # Local app screenshots — not used by the site (app UI is recreated in HTML)
 *.PNG
 *.png
+
+# ...except images the site actually serves
+!og-image.png

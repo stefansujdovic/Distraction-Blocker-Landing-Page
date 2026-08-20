@@ -30,11 +30,10 @@
   <link rel="icon"
     href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/inter-latin.woff2" crossorigin>
 
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -44,6 +43,62 @@
   <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
   <script data-goatcounter="https://distractionblocker.goatcounter.com/count" async
     src="//gc.zgo.at/count.js"></script>
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://distraction-blocker.com/privacy.html#webpage",
+        "url": "https://distraction-blocker.com/privacy.html",
+        "name": "Privacy Policy — Distraction Blocker",
+        "description": "How Distraction Blocker handles your data: cookie-free GoatCounter analytics, no tracking in the app, and your email only if you choose to give it.",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/#website"
+        },
+        "primaryImageOfPage": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en",
+        "breadcrumb": {
+          "@id": "https://distraction-blocker.com/privacy.html#breadcrumb"
+        },
+        "dateModified": "2026-07-08",
+        "publisher": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://distraction-blocker.com/privacy.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://distraction-blocker.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": "https://distraction-blocker.com/privacy.html"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://distraction-blocker.com/#stefan",
+        "name": "Stefan Sujdovic",
+        "email": "stefansujdovic@gmail.com",
+        "url": "https://distraction-blocker.com/",
+        "sameAs": [
+          "https://github.com/stefansujdovic"
+        ],
+        "jobTitle": "Software Developer"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>

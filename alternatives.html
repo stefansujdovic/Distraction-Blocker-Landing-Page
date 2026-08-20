@@ -32,11 +32,10 @@
   <link rel="icon"
     href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/inter-latin.woff2" crossorigin>
 
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -188,22 +187,100 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "name": "Distraction Blocker",
-        "operatingSystem": "Windows 10, Windows 11",
-        "applicationCategory": "UtilitiesApplication",
-        "description": "A free Windows app and a free alternative to Cold Turkey, Freedom, and StayFocusd. It runs Pomodoro focus sessions and blocks distracting apps and websites, and cannot be turned off until the PC restarts.",
+        "@type": "WebPage",
+        "@id": "https://distraction-blocker.com/alternatives.html#webpage",
         "url": "https://distraction-blocker.com/alternatives.html",
-        "image": "https://distraction-blocker.com/og-image.png",
-        "downloadUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "name": "Free Alternative to Cold Turkey, Freedom & StayFocusd — Distraction Blocker",
+        "description": "Free alternative to Cold Turkey, Freedom and StayFocusd. Blocks apps and sites on Windows 10/11, can't be turned off until you restart. Full comparison.",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/#website"
+        },
+        "about": {
+          "@id": "https://distraction-blocker.com/#software"
+        },
+        "primaryImageOfPage": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en",
+        "breadcrumb": {
+          "@id": "https://distraction-blocker.com/alternatives.html#breadcrumb"
         }
       },
       {
+        "@type": "BreadcrumbList",
+        "@id": "https://distraction-blocker.com/alternatives.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://distraction-blocker.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Alternatives",
+            "item": "https://distraction-blocker.com/alternatives.html"
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://distraction-blocker.com/#software",
+        "name": "Distraction Blocker",
+        "url": "https://distraction-blocker.com/",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "UtilitiesApplication",
+        "applicationSubCategory": "Focus and website blocker",
+        "description": "A free Windows app and a free alternative to Cold Turkey, Freedom, and StayFocusd. It runs Pomodoro focus sessions and blocks distracting apps and websites, and cannot be turned off until the PC restarts.",
+        "softwareVersion": "1.0.0",
+        "datePublished": "2026-07-07",
+        "downloadUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
+        "installUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
+        "releaseNotes": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest",
+        "fileSize": "118 MB",
+        "softwareRequirements": "Windows 10 or Windows 11",
+        "image": "https://distraction-blocker.com/og-image.png",
+        "screenshot": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "featureList": [
+          "Pomodoro cycles with custom focus and break durations, fixed count or infinite",
+          "Blocks distracting websites and desktop apps from separate lists",
+          "No escape during focus — the session cannot be stopped, paused, or uninstalled until a PC restart",
+          "Windows notification the moment a focus session ends",
+          "Real breaks — everything unlocks automatically between sessions",
+          "Light native Windows app with no account, no sign-in, and no data leaving the machine"
+        ],
+        "author": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        },
+        "publisher": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://distraction-blocker.com/alternatives.html"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://distraction-blocker.com/#stefan",
+        "name": "Stefan Sujdovic",
+        "email": "stefansujdovic@gmail.com",
+        "url": "https://distraction-blocker.com/",
+        "sameAs": [
+          "https://github.com/stefansujdovic"
+        ],
+        "jobTitle": "Software Developer"
+      },
+      {
         "@type": "FAQPage",
+        "@id": "https://distraction-blocker.com/alternatives.html#faq",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/alternatives.html#webpage"
+        },
         "mainEntity": [
           {
             "@type": "Question",
@@ -313,6 +390,11 @@
           </button>
           <a class="btn big ghost" href="#compare">See the comparison</a>
         </div>
+        <noscript>
+          <p class="cta-note"><a
+              href="https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest">Download the
+              latest release from GitHub →</a></p>
+        </noscript>
         <div class="cta-note">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
               stroke-linecap="round" stroke-linejoin="round">
@@ -342,6 +424,7 @@
 
         <div class="cmp-wrap reveal">
           <table class="cmp">
+              <caption class="sr-only">Feature and price comparison of Distraction Blocker, Cold Turkey Blocker, Freedom, StayFocusd / BlockSite and Forest</caption>
             <thead>
               <tr>
                 <th class="feat-col" scope="col">Feature</th>
@@ -371,134 +454,134 @@
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Blocks websites</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">any browser</span></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span><span class="sub">any browser</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">in browser</span></td>
+                  </svg><span class="sr-only">Yes</span><span class="sub">in browser</span></td>
                 <td class="partial">Limited</td>
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Blocks desktop apps &amp; games</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">Pro</span></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span><span class="sub">Pro</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">No</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
+                  </svg><span class="sr-only">No</span></td>
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Can't be turned off mid-session</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">restart only</span></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span><span class="sub">restart only</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">Pro locked mode</span></td>
+                  </svg><span class="sr-only">Yes</span><span class="sub">Pro locked mode</span></td>
                 <td class="partial">Premium<span class="sub">Locked Mode</span></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">No</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
+                  </svg><span class="sr-only">No</span></td>
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Works without an account</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">No</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
+                  </svg><span class="sr-only">No</span></td>
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Pomodoro focus / break cycles</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg><span class="sub">Pro</span></td>
+                  </svg><span class="sr-only">Yes</span><span class="sub">Pro</span></td>
                 <td class="partial">Partial</td>
                 <td class="partial">Timer</td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
+                  </svg><span class="sr-only">Yes</span></td>
               </tr>
               <tr>
                 <th class="feat-col" scope="row">Private / offline (nothing leaves your PC)</th>
-                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                <td class="db-col"><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-yes" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
-                  </svg></td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  </svg><span class="sr-only">Yes</span></td>
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
+                  </svg><span class="sr-only">No</span></td>
                 <td class="partial">Mostly</td>
-                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <td><svg class="ic-no" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
                     stroke-width="3" stroke-linecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg></td>
+                  </svg><span class="sr-only">No</span></td>
               </tr>
             </tbody>
           </table>
@@ -699,7 +782,12 @@
           </svg>
           Download free for Windows
         </button>
-        <div class="dl-meta">DistractionBlockerSetup.exe · Free · Windows 10 / 11 · <a
+        <noscript>
+          <p class="cta-note"><a
+              href="https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest">Download the
+              latest release from GitHub →</a></p>
+        </noscript>
+        <div class="dl-meta">DistractionBlockerSetup.exe · v1.0.0 · 118 MB · Free · Windows 10 / 11 · <a
             href="https://www.virustotal.com/gui/file/c31beac64f487f29f085787864575c9a4b4e79619fbf877d23bd4082d7ffb787/detection"
             target="_blank" rel="noopener">Scanned clean on VirusTotal</a></div>
       </div>

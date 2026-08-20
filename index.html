@@ -30,11 +30,10 @@
   <link rel="icon"
     href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2"
+    href="assets/fonts/inter-latin.woff2" crossorigin>
 
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -51,22 +50,90 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebSite",
+        "@id": "https://distraction-blocker.com/#website",
+        "url": "https://distraction-blocker.com/",
         "name": "Distraction Blocker",
+        "description": "Free Windows Pomodoro app that blocks distracting websites and apps until your PC restarts.",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://distraction-blocker.com/#stefan",
+        "name": "Stefan Sujdovic",
+        "email": "stefansujdovic@gmail.com",
+        "url": "https://distraction-blocker.com/",
+        "sameAs": [
+          "https://github.com/stefansujdovic"
+        ],
+        "jobTitle": "Software Developer"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://distraction-blocker.com/#webpage",
+        "url": "https://distraction-blocker.com/",
+        "name": "Distraction Blocker — the focus app you can't talk your way out of",
+        "description": "Free Windows app that runs Pomodoro focus sessions and blocks distracting apps and websites until the PC restarts.",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/#website"
+        },
+        "about": {
+          "@id": "https://distraction-blocker.com/#software"
+        },
+        "primaryImageOfPage": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://distraction-blocker.com/#software",
+        "name": "Distraction Blocker",
+        "url": "https://distraction-blocker.com/",
         "operatingSystem": "Windows 10, Windows 11",
         "applicationCategory": "UtilitiesApplication",
+        "applicationSubCategory": "Focus and website blocker",
         "description": "Free Windows app that runs Pomodoro focus sessions and blocks distracting apps and websites. Once a focus session starts it cannot be turned off until the PC restarts.",
-        "url": "https://distraction-blocker.com/",
-        "image": "https://distraction-blocker.com/og-image.png",
+        "softwareVersion": "1.0.0",
+        "datePublished": "2026-07-07",
         "downloadUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
+        "installUrl": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe",
+        "releaseNotes": "https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest",
+        "fileSize": "118 MB",
+        "softwareRequirements": "Windows 10 or Windows 11",
+        "image": "https://distraction-blocker.com/og-image.png",
+        "screenshot": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "featureList": [
+          "Pomodoro cycles with custom focus and break durations, fixed count or infinite",
+          "Blocks distracting websites and desktop apps from separate lists",
+          "No escape during focus — the session cannot be stopped, paused, or uninstalled until a PC restart",
+          "Windows notification the moment a focus session ends",
+          "Real breaks — everything unlocks automatically between sessions",
+          "Light native Windows app with no account, no sign-in, and no data leaving the machine"
+        ],
+        "author": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        },
+        "publisher": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://distraction-blocker.com/"
         }
       },
       {
         "@type": "FAQPage",
+        "@id": "https://distraction-blocker.com/#faq",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/#webpage"
+        },
         "mainEntity": [
           {
             "@type": "Question",
@@ -113,7 +180,7 @@
             "name": "Does it track what I do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. There is no account, no analytics, and nothing leaves your machine. Your block lists and timer settings stay on your PC."
+              "text": "No. The app itself has no account and no analytics — your block lists and timer settings never leave your PC. This website uses GoatCounter, a cookie-free analytics tool that counts anonymous page visits, and stores your email only if you choose to enter it before downloading."
             }
           }
         ]
@@ -506,8 +573,10 @@
                 <line x1="12" y1="5" x2="12" y2="19" />
                 <line x1="5" y1="12" x2="19" y2="12" />
               </svg></summary>
-            <div class="a">No. There's no account, no analytics, and nothing leaves your machine. Your block lists and
-              timer settings stay on your PC.</div>
+            <div class="a">No. The app itself has no account and no analytics — your block lists and timer settings
+              never leave your PC. This website uses GoatCounter, a cookie-free analytics tool that counts anonymous
+              page visits, and stores your email only if you choose to enter it before downloading. Details in the
+              <a href="privacy.html">privacy policy</a>.</div>
           </details>
         </div>
       </div>
@@ -528,7 +597,7 @@
           </svg>
           Download free for Windows
         </button>
-        <div class="dl-meta">DistractionBlockerSetup.exe · Free · Windows 10 / 11 · <a
+        <div class="dl-meta">DistractionBlockerSetup.exe · v1.0.0 · 118 MB · Free · Windows 10 / 11 · <a
             href="https://www.virustotal.com/gui/file/c31beac64f487f29f085787864575c9a4b4e79619fbf877d23bd4082d7ffb787/detection"
             target="_blank" rel="noopener">Scanned clean on VirusTotal</a></div>
       </div>
