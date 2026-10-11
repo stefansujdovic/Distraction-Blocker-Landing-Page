@@ -15,7 +15,7 @@
 - Breaks: apps and websites unlock automatically during scheduled breaks
 - Privacy: no account, no in-app analytics, block lists and settings stay on the device. The website uses cookie-free GoatCounter analytics and stores an email address only if the visitor enters one before downloading.
 - Compares to: Cold Turkey, Freedom, StayFocusd, Forest — free with no paid tier or subscription
-- Version: 1.0.0, released 2026-07-07
+- Version: 1.0.1, released 2026-10-11
 - Installer size: 118 MB
 - Download: https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe
 - Contact: stefansujdovic@gmail.com
