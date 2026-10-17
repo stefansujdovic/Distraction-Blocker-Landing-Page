@@ -1,0 +1,8 @@
+# GitHub Pages (Jekyll) settings. Pages have no front matter, so Jekyll copies
+# them as-is; this only keeps build/working files off the public site.
+# Folders starting with "_" (like _partials/) are never published.
+exclude:
+  - build.mjs
+  - seo-plan/
+  - HOW_TO_DEPLOY.md
+  - DistractionBlockerSetup.exe

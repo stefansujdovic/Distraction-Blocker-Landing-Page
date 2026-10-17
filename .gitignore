@@ -1,9 +1,14 @@
 # Installer is distributed via GitHub Releases, not committed (too large for repo)
 DistractionBlockerSetup.exe
 
+HOW_TO_DEPLOY.md
+
 # Local app screenshots — not used by the site (app UI is recreated in HTML)
 *.PNG
 *.png
 
 # ...except images the site actually serves
 !og-image.png
+
+# Internal SEO planning docs (would be published by GitHub Pages/Jekyll if committed)
+seo-plan/

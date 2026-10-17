@@ -29,157 +29,27 @@
     content="A free Windows blocker that blocks apps and websites and can't be turned off until you restart. See the full comparison.">
   <meta name="twitter:image" content="https://distraction-blocker.com/og-image.png">
 
+  <!-- @partial head -->
   <link rel="icon"
     href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
 
   <link rel="preload" as="font" type="font/woff2"
-    href="assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+    href="/assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2"
-    href="assets/fonts/inter-latin.woff2" crossorigin>
+    href="/assets/fonts/inter-latin.woff2" crossorigin>
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <!-- @end head -->
 
-  <!-- Page-specific styles for the comparison table (self-contained) -->
-  <style>
-    .legal-hero .hero-cta,
-    .legal-hero .cta-note { justify-content: center; }
-    .legal-hero .hero-cta { margin-top: 30px; }
 
-    .cmp-wrap {
-      overflow-x: auto;
-      margin-top: 42px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      -webkit-overflow-scrolling: touch;
-    }
-    .cmp {
-      width: 100%;
-      min-width: 720px;
-      border-collapse: collapse;
-      background: var(--panel);
-      font-size: 14px;
-    }
-    .cmp th,
-    .cmp td {
-      padding: 14px 16px;
-      text-align: center;
-      border-bottom: 1px solid var(--line);
-      vertical-align: middle;
-    }
-    .cmp thead th {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 14.5px;
-      color: var(--text);
-      background: var(--ink-2);
-    }
-    .cmp tbody th {
-      text-align: left;
-      font-weight: 600;
-      font-size: 13.5px;
-      color: var(--text);
-      background: var(--panel);
-    }
-    .cmp .feat-col { text-align: left; color: var(--muted); }
-    .cmp tbody tr:last-child th,
-    .cmp tbody tr:last-child td { border-bottom: none; }
-    .cmp td { color: var(--muted); }
-    .cmp .sub {
-      display: block;
-      font-size: 11px;
-      color: var(--dim);
-      margin-top: 3px;
-      line-height: 1.35;
-    }
-    .cmp .partial { color: var(--amber); font-weight: 600; }
-    .ic-yes { color: var(--violet-soft); }
-    .ic-no { color: var(--dim); }
-
-    /* highlighted Distraction Blocker column */
-    .cmp .db-col {
-      background: rgba(139, 92, 246, .08);
-      border-left: 1px solid rgba(139, 92, 246, .35);
-      border-right: 1px solid rgba(139, 92, 246, .35);
-      color: var(--text);
-    }
-    .cmp thead .db-col {
-      background: rgba(139, 92, 246, .16);
-      color: var(--violet-soft);
-      border-top: 2px solid var(--violet);
-    }
-    .db-badge {
-      display: block;
-      font-family: var(--body);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--violet-soft);
-      margin-top: 4px;
-    }
-    .cmp-note { font-size: 12.5px; color: var(--dim); margin-top: 16px; text-align: center; }
-
-    /* head-to-head cards */
-    .vs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 40px;
-    }
-    .vs-card h3 { display: flex; align-items: center; gap: 10px; }
-    .vs-tag {
-      font-family: var(--body);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      color: var(--violet-soft);
-      background: rgba(139, 92, 246, .12);
-      border-radius: 6px;
-      padding: 3px 8px;
-    }
-
-    /* honest "when a competitor is better" box */
-    .honest {
-      border: 1px dashed rgba(139, 92, 246, .4);
-      border-radius: var(--radius);
-      background: rgba(139, 92, 246, .06);
-      padding: 26px 28px;
-      margin-top: 44px;
-    }
-    .honest h3 { font-family: var(--display); font-size: 19px; font-weight: 700; margin-bottom: 14px; }
-    .honest ul { list-style: none; margin: 0; padding: 0; }
-    .honest li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 11px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-    .honest li:last-child { margin-bottom: 0; }
-    .honest li::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 10px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--violet-soft);
-    }
-    .honest li strong { color: var(--text); font-weight: 600; }
-
-    @media (max-width: 640px) {
-      .vs-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-
-  <script defer src="assets/js/config.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <!-- @partial head-scripts -->
+  <script defer src="/assets/js/config.js"></script>
+  <script defer src="/assets/js/main.js"></script>
 
   <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
   <script data-goatcounter="https://distractionblocker.goatcounter.com/count" async
     src="//gc.zgo.at/count.js"></script>
+  <!-- @end head-scripts -->
 
   <!-- Structured data for rich results -->
   <script type="application/ld+json">
@@ -190,6 +60,8 @@
         "@type": "WebPage",
         "@id": "https://distraction-blocker.com/alternatives.html#webpage",
         "url": "https://distraction-blocker.com/alternatives.html",
+        "datePublished": "2026-08-19",
+        "dateModified": "2026-10-17",
         "name": "Free Alternative to Cold Turkey, Freedom & StayFocusd — Distraction Blocker",
         "description": "Free alternative to Cold Turkey, Freedom and StayFocusd. Blocks apps and sites on Windows 10/11, can't be turned off until you restart. Full comparison.",
         "isPartOf": {
@@ -340,9 +212,10 @@
 <body>
   <div class="aurora" aria-hidden="true"></div>
 
+  <!-- @partial header -->
   <header>
     <div class="wrap nav">
-      <a class="logo" href="index.html">
+      <a class="logo" href="/">
         <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
           <rect width="100" height="100" rx="22" fill="#8b5cf6" />
           <circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="8" />
@@ -351,11 +224,11 @@
         Distraction Blocker
       </a>
       <nav class="nav-links" aria-label="Main">
-        <a href="parental-control.html">Parental Control</a>
-        <a href="alternatives.html">Alternatives</a>
-        <a href="index.html#how">How it works</a>
-        <a href="index.html#features">Features</a>
-        <a href="index.html#faq">FAQ</a>
+        <a href="/parental-control.html">Parental Control</a>
+        <a href="/alternatives.html">Alternatives</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#faq">FAQ</a>
       </nav>
       <button type="button" class="btn js-download">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
@@ -368,6 +241,7 @@
       </button>
     </div>
   </header>
+  <!-- @end header -->
 
   <main>
     <!-- ================= HERO ================= -->
@@ -605,7 +479,8 @@
             <h3><span class="vs-tag">vs</span>Cold Turkey</h3>
             <p>Cold Turkey is the closest match — its Pro "locked" blocks are genuinely hard to beat. But app blocking
               and locked mode are paid Pro features; the free tier only blocks websites and lets you cancel. Distraction
-              Blocker gives you the unbreakable, block-everything session for free.</p>
+              Blocker gives you the unbreakable, block-everything session for free.
+              <a href="/vs/cold-turkey/">Full Cold Turkey comparison →</a></p>
           </div>
           <div class="feat vs-card reveal">
             <h3><span class="vs-tag">vs</span>Freedom</h3>
@@ -794,6 +669,7 @@
     </section>
   </main>
 
+  <!-- @partial footer -->
   <footer>
     <div class="wrap">
       <p class="foot-contact">
@@ -802,13 +678,16 @@
       </p>
       <div class="foot">
         <span>© 2026 Distraction Blocker. Built for people who mean it.</span>
-        <span><a href="parental-control.html">Parental Control</a> · <a href="alternatives.html">Alternatives</a> · <a
-            href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a
-            href="index.html#faq">FAQ</a> · <a href="privacy.html">Privacy</a></span>
+        <span><a href="/parental-control.html">Parental Control</a> · <a href="/alternatives.html">Alternatives</a> · <a
+            href="/#how">How it works</a> · <a href="/#features">Features</a> · <a
+            href="/#faq">FAQ</a> · <a href="/safe/">Is it safe?</a> · <a href="/changelog/">Changelog</a> · <a
+            href="/privacy.html">Privacy</a></span>
       </div>
     </div>
   </footer>
+  <!-- @end footer -->
 
+  <!-- @partial download-modal -->
   <!-- ================= EMAIL-GATE MODAL ================= -->
   <div class="modal" id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlModalTitle" aria-hidden="true">
     <div class="modal-card" id="dlCard">
@@ -839,7 +718,7 @@
         <button type="submit" class="btn big" id="dlSubmit">
           <span id="dlSubmitLabel">Get the download</span>
         </button>
-        <p class="m-fine">Windows 10 / 11 · Free · ~118 MB installer</p>
+        <p class="m-fine">Windows 10 / 11 · Free · ~118 MB installer · <a href="/safe/">Is it safe?</a></p>
       </form>
 
       <div class="m-success">
@@ -855,6 +734,7 @@
       </div>
     </div>
   </div>
+  <!-- @end download-modal -->
 
 </body>
 

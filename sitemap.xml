@@ -2,26 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://distraction-blocker.com/</loc>
-    <lastmod>2026-10-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://distraction-blocker.com/parental-control.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://distraction-blocker.com/alternatives.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://distraction-blocker.com/block/roblox/</loc>
+    <lastmod>2026-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://distraction-blocker.com/changelog/</loc>
+    <lastmod>2026-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://distraction-blocker.com/parental-control.html</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://distraction-blocker.com/privacy.html</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://distraction-blocker.com/safe/</loc>
+    <lastmod>2026-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://distraction-blocker.com/vs/cold-turkey/</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — Distraction Blocker Release History</title>
+  <meta name="description"
+    content="Every Distraction Blocker release with its date, what changed, and the installer's SHA-256 fingerprint. Current version: 1.0.1 for Windows 10 and 11.">
+  <meta name="theme-color" content="#0d0b15">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Stefan Sujdovic">
+  <link rel="canonical" href="https://distraction-blocker.com/changelog/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Distraction Blocker changelog">
+  <meta property="og:description" content="Every release with its date, what changed, and the installer's SHA-256.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://distraction-blocker.com/changelog/">
+  <meta property="og:image" content="https://distraction-blocker.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Distraction Blocker changelog">
+  <meta name="twitter:description" content="Every release with its date, what changed, and the installer's SHA-256.">
+  <meta name="twitter:image" content="https://distraction-blocker.com/og-image.png">
+
+  <!-- @partial head -->
+  <link rel="icon"
+    href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='22' fill='%238b5cf6'/&gt;&lt;circle cx='50' cy='50' r='26' fill='none' stroke='white' stroke-width='8'/&gt;&lt;line x1='50' y1='50' x2='50' y2='32' stroke='white' stroke-width='8' stroke-linecap='round'/&gt;&lt;/svg&gt;">
+
+  <link rel="preload" as="font" type="font/woff2"
+    href="/assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2"
+    href="/assets/fonts/inter-latin.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <!-- @end head -->
+
+  <!-- Page-specific styles for the release list -->
+  <style>
+    .release { border-top: 1px solid var(--line); padding: 34px 0 0; margin-top: 40px; }
+    .release:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .release h2 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 6px; }
+    .release-tag {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--violet-soft);
+      background: rgba(139, 92, 246, .12);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .release-date { color: var(--dim); font-size: 14px; margin-bottom: 16px; }
+  </style>
+
+  <!-- @partial head-scripts -->
+  <script defer src="/assets/js/config.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+  <script data-goatcounter="https://distractionblocker.goatcounter.com/count" async
+    src="//gc.zgo.at/count.js"></script>
+  <!-- @end head-scripts -->
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://distraction-blocker.com/changelog/#webpage",
+        "url": "https://distraction-blocker.com/changelog/",
+        "datePublished": "2026-10-17",
+        "dateModified": "2026-10-17",
+        "name": "Changelog — Distraction Blocker Release History",
+        "description": "Every Distraction Blocker release with its date, what changed, and the installer's SHA-256 fingerprint.",
+        "isPartOf": {
+          "@id": "https://distraction-blocker.com/#website"
+        },
+        "about": {
+          "@id": "https://distraction-blocker.com/#software"
+        },
+        "primaryImageOfPage": "https://distraction-blocker.com/og-image.png",
+        "inLanguage": "en",
+        "breadcrumb": {
+          "@id": "https://distraction-blocker.com/changelog/#breadcrumb"
+        },
+        "publisher": {
+          "@id": "https://distraction-blocker.com/#stefan"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://distraction-blocker.com/changelog/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://distraction-blocker.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Changelog",
+            "item": "https://distraction-blocker.com/changelog/"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://distraction-blocker.com/#stefan",
+        "name": "Stefan Sujdovic",
+        "email": "stefansujdovic@gmail.com",
+        "url": "https://distraction-blocker.com/",
+        "sameAs": [
+          "https://github.com/stefansujdovic"
+        ],
+        "jobTitle": "Software Developer"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- @partial header -->
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="/">
+        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" rx="22" fill="#8b5cf6" />
+          <circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="8" />
+          <line x1="50" y1="50" x2="50" y2="32" stroke="#fff" stroke-width="8" stroke-linecap="round" />
+        </svg>
+        Distraction Blocker
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="/parental-control.html">Parental Control</a>
+        <a href="/alternatives.html">Alternatives</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <button type="button" class="btn js-download">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download
+      </button>
+    </div>
+  </header>
+  <!-- @end header -->
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <div class="legal-hero">
+      <div class="wrap">
+        <div class="sec-eyebrow">Releases</div>
+        <h1>Changelog</h1>
+        <p class="sec-lead">Every version of Distraction Blocker for Windows 10 and 11, newest first — with the date,
+          what changed, and the installer's SHA-256 fingerprint so you can <a href="/safe/#verify">verify your
+            download</a>.</p>
+      </div>
+    </div>
+
+    <article class="legal">
+      <section class="release" id="v1.0.1">
+        <h2>Version 1.0.1 <span class="release-tag">Latest</span></h2>
+        <p class="release-date">Released October 11, 2026</p>
+        <ul>
+          <li><strong>Maintenance release.</strong> No changes to features or how the app works.</li>
+        </ul>
+        <p>SHA-256 of <strong>DistractionBlockerSetup.exe</strong>:</p>
+        <pre class="code-block"><code>1558678FE15D08DE849538EEF90823D06F328E65A3F29E156464C2038602FAE0</code></pre>
+        <p><a href="https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/tag/v1.0.1"
+            target="_blank" rel="noopener">Release on GitHub</a></p>
+      </section>
+
+      <section class="release" id="v1.0.0">
+        <h2>Version 1.0.0</h2>
+        <p class="release-date">Released July 7, 2026</p>
+        <p>The first public release.</p>
+        <ul>
+          <li><strong>Pomodoro cycles</strong> with your own focus and break lengths — a fixed number of rounds or
+            infinite.</li>
+          <li><strong>Blocks websites and desktop apps</strong> from separate lists.</li>
+          <li><strong>No escape during focus</strong> — a running session can't be stopped, paused, or uninstalled
+            until you restart your PC.</li>
+          <li><strong>Windows notification</strong> the moment a focus session ends.</li>
+          <li><strong>Real breaks</strong> — everything unlocks automatically between sessions.</li>
+          <li><strong>No account, no sign-in</strong>, and no data leaving your PC.</li>
+        </ul>
+        <p>SHA-256 of <strong>DistractionBlockerSetup.exe</strong>:</p>
+        <pre class="code-block"><code>C31BEAC64F487F29F085787864575C9A4B4E79619FBF877D23BD4082D7FFB787</code></pre>
+        <p><a href="https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/tag/v1.0.0"
+            target="_blank" rel="noopener">Release on GitHub</a> · <a
+            href="https://www.virustotal.com/gui/file/c31beac64f487f29f085787864575c9a4b4e79619fbf877d23bd4082d7ffb787/detection"
+            target="_blank" rel="noopener">VirusTotal report</a></p>
+      </section>
+
+      <div class="legal-contact">
+        <h3>Found a bug or want a feature?</h3>
+        <p>Tell the developer at <a href="mailto:stefansujdovic@gmail.com">stefansujdovic@gmail.com</a> — every
+          message gets read.</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- @partial footer -->
+  <footer>
+    <div class="wrap">
+      <p class="foot-contact">
+        Questions, feedback, or a bug to report? Reach me directly at
+        <a href="mailto:stefansujdovic@gmail.com">stefansujdovic@gmail.com</a>.
+      </p>
+      <div class="foot">
+        <span>© 2026 Distraction Blocker. Built for people who mean it.</span>
+        <span><a href="/parental-control.html">Parental Control</a> · <a href="/alternatives.html">Alternatives</a> · <a
+            href="/#how">How it works</a> · <a href="/#features">Features</a> · <a
+            href="/#faq">FAQ</a> · <a href="/safe/">Is it safe?</a> · <a href="/changelog/">Changelog</a> · <a
+            href="/privacy.html">Privacy</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- @end footer -->
+
+  <!-- @partial download-modal -->
+  <!-- ================= EMAIL-GATE MODAL ================= -->
+  <div class="modal" id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlModalTitle" aria-hidden="true">
+    <div class="modal-card" id="dlCard">
+      <button class="modal-close" id="dlClose" type="button" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <form class="m-form" id="dlForm" novalidate>
+        <div class="modal-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <h3 id="dlModalTitle">One quick step</h3>
+        <p class="m-sub">Drop your email and your download starts right away. We'll only use it to let you know about
+          updates — no spam, unsubscribe anytime.</p>
+        <div class="m-field">
+          <input type="email" id="dlEmail" name="email" placeholder="you@email.com" autocomplete="email" required
+            aria-label="Email address">
+        </div>
+        <div class="m-error" id="dlError">Please enter a valid email address.</div>
+        <button type="submit" class="btn big" id="dlSubmit">
+          <span id="dlSubmitLabel">Get the download</span>
+        </button>
+        <p class="m-fine">Windows 10 / 11 · Free · ~118 MB installer · <a href="/safe/">Is it safe?</a></p>
+      </form>
+
+      <div class="m-success">
+        <div class="modal-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3>Your download is starting</h3>
+        <p class="m-sub">Thanks! If it didn't begin automatically, <span class="relink" id="dlRelink">click here to
+            download</span>.</p>
+      </div>
+    </div>
+  </div>
+  <!-- @end download-modal -->
+
+</body>
+
+</html>

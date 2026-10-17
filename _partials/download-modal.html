@@ -1,0 +1,46 @@
+  <!-- ================= EMAIL-GATE MODAL ================= -->
+  <div class="modal" id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlModalTitle" aria-hidden="true">
+    <div class="modal-card" id="dlCard">
+      <button class="modal-close" id="dlClose" type="button" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <form class="m-form" id="dlForm" novalidate>
+        <div class="modal-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <h3 id="dlModalTitle">One quick step</h3>
+        <p class="m-sub">Drop your email and your download starts right away. We'll only use it to let you know about
+          updates — no spam, unsubscribe anytime.</p>
+        <div class="m-field">
+          <input type="email" id="dlEmail" name="email" placeholder="you@email.com" autocomplete="email" required
+            aria-label="Email address">
+        </div>
+        <div class="m-error" id="dlError">Please enter a valid email address.</div>
+        <button type="submit" class="btn big" id="dlSubmit">
+          <span id="dlSubmitLabel">Get the download</span>
+        </button>
+        <p class="m-fine">Windows 10 / 11 · Free · ~118 MB installer · <a href="/safe/">Is it safe?</a></p>
+      </form>
+
+      <div class="m-success">
+        <div class="modal-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3>Your download is starting</h3>
+        <p class="m-sub">Thanks! If it didn't begin automatically, <span class="relink" id="dlRelink">click here to
+            download</span>.</p>
+      </div>
+    </div>
+  </div>

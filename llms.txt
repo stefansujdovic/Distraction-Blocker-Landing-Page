@@ -6,6 +6,10 @@
 - [Home / focus app](https://distraction-blocker.com/): Overview, how it works, features, FAQ, and download.
 - [Parental Control](https://distraction-blocker.com/parental-control.html): How to use Distraction Blocker as free parental-control software — block games, apps, and websites during study time with no bypass until restart.
 - [Free Alternatives](https://distraction-blocker.com/alternatives.html): How Distraction Blocker compares to Cold Turkey, Freedom, StayFocusd and Forest — free, no account, and unbypassable until restart.
+- [How to block Roblox on PC](https://distraction-blocker.com/block/roblox/): Three ways to block Roblox on a Windows PC during homework — Distraction Blocker (blocks the Roblox app and roblox.com, can't be turned off until restart, unlocks in breaks), Roblox's parental controls (daily limits across devices, needs a linked parent account), and Microsoft Family Safety (needs Microsoft accounts).
+- [Cold Turkey alternative](https://distraction-blocker.com/vs/cold-turkey/): Distraction Blocker vs Cold Turkey Blocker — Cold Turkey keeps app blocking, locking, schedules and breaks in its paid Pro version (one-time, about $39); Distraction Blocker includes app blocking and a locked session (until restart) for free, blocks websites via the hosts file without browser extensions, but is Windows-only with no schedules or statistics.
+- [Is it safe?](https://distraction-blocker.com/safe/): VirusTotal scan, SHA-256 verification, why Windows SmartScreen shows "unknown publisher", what the app changes on the PC (hosts file entries and closing blocked apps during focus sessions), and how to uninstall.
+- [Changelog](https://distraction-blocker.com/changelog/): Every release with its date, changes, and installer SHA-256.
 - [Privacy Policy](https://distraction-blocker.com/privacy.html): What data is and isn't collected (privacy-friendly, no cookies).
 
 ## Key facts
@@ -17,5 +21,7 @@
 - Compares to: Cold Turkey, Freedom, StayFocusd, Forest — free with no paid tier or subscription
 - Version: 1.0.1, released 2026-10-11
 - Installer size: 118 MB
+- Installer SHA-256 (v1.0.1): 1558678fe15d08de849538eef90823d06f328e65a3f29e156464c2038602fae0
+- Installs to Program Files; uninstall from Windows Settings > Apps when no focus session is running
 - Download: https://github.com/stefansujdovic/Distraction-Blocker-Landing-Page/releases/latest/download/DistractionBlockerSetup.exe
 - Contact: stefansujdovic@gmail.com
