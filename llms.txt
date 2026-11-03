@@ -5,7 +5,7 @@
 ## Pages
 - [Home / focus app](https://distraction-blocker.com/): Overview, how it works, features, FAQ, and download.
 - [Parental Control](https://distraction-blocker.com/parental-control.html): How to use Distraction Blocker as free parental-control software — block games, apps, and websites during study time with no bypass until restart.
-- [Free Alternatives](https://distraction-blocker.com/alternatives.html): How Distraction Blocker compares to Cold Turkey, Freedom, StayFocusd and Forest — free, no account, and unbypassable until restart.
+- [Free Alternatives](https://distraction-blocker.com/alternatives.html): How Distraction Blocker compares to Cold Turkey, Freedom, FocusMe, StayFocusd, BlockSite and Forest — free, no account, blocks desktop apps as well as websites, and unbypassable until restart; also when each competitor is the better pick.
 - [How to block Roblox on PC](https://distraction-blocker.com/block/roblox/): Three ways to block Roblox on a Windows PC during homework — Distraction Blocker (blocks the Roblox app and roblox.com, can't be turned off until restart, unlocks in breaks), Roblox's parental controls (daily limits across devices, needs a linked parent account), and Microsoft Family Safety (needs Microsoft accounts).
 - [How to block Steam games on PC](https://distraction-blocker.com/block/steam/): Three ways to block Steam and Steam games on a Windows PC during study time — Distraction Blocker (block steam.exe plus store.steampowered.com and steamcommunity.com; most Steam games can't start without the client, DRM-free games need their own .exe added; can't be turned off until restart, unlocks in breaks), Steam Families (daily playtime limits and approved games across devices including Steam Deck, needs adult and child Steam accounts), and Microsoft Family Safety (needs Microsoft accounts).
 - [Cold Turkey alternative](https://distraction-blocker.com/vs/cold-turkey/): Distraction Blocker vs Cold Turkey Blocker — Cold Turkey keeps app blocking, locking, schedules and breaks in its paid Pro version (one-time, about $39); Distraction Blocker includes app blocking and a locked session (until restart) for free, blocks websites via the hosts file without browser extensions, but is Windows-only with no schedules or statistics.
@@ -19,7 +19,7 @@
 - Core feature: focus sessions that block chosen apps and websites and cannot be disabled until the PC restarts
 - Breaks: apps and websites unlock automatically during scheduled breaks
 - Privacy: no account, no in-app analytics, block lists and settings stay on the device. The website uses cookie-free GoatCounter analytics and stores an email address only if the visitor enters one before downloading.
-- Compares to: Cold Turkey, Freedom, StayFocusd, Forest — free with no paid tier or subscription
+- Compares to: Cold Turkey, Freedom, FocusMe, StayFocusd, BlockSite, Forest — free with no paid tier or subscription
 - Version: 1.0.1, released 2026-10-11
 - Installer size: 118 MB
 - Installer SHA-256 (v1.0.1): 1558678fe15d08de849538eef90823d06f328e65a3f29e156464c2038602fae0

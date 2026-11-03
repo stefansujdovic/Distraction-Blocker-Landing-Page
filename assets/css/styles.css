@@ -544,6 +544,8 @@ footer{
 }
 .legal-contact h3{margin-top:0}
 .legal-contact p{margin-bottom:0}
+.legal-hero .byline{font-size:13.5px;color:var(--dim);margin:-6px 0 16px}
+.legal-hero .byline a{color:inherit;text-decoration:underline}
 .legal-hero .sec-lead a{color:var(--violet-soft);text-decoration:underline}
 
 /* commands and SHA-256 hashes */
@@ -577,6 +579,7 @@ footer{
   background: var(--panel);
   font-size: 14px;
 }
+.cmp--wide { min-width: 940px; }
 .cmp th,
 .cmp td {
   padding: 14px 16px;
