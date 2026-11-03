@@ -547,7 +547,7 @@ footer{
 .legal-hero .sec-lead a{color:var(--violet-soft);text-decoration:underline}
 
 /* commands and SHA-256 hashes */
-.legal code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;color:var(--text);overflow-wrap:anywhere}
+.legal code,.legal-hero code,.guide-steps code,.guide-note code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;color:var(--text);overflow-wrap:anywhere}
 .code-block{
   background:var(--panel);border:1px solid var(--line);border-radius:10px;
   padding:14px 16px;margin:0 0 18px;white-space:pre-wrap;overflow-wrap:anywhere;
