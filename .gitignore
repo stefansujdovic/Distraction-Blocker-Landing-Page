@@ -9,6 +9,9 @@ HOW_TO_DEPLOY.md
 
 # ...except images the site actually serves
 !og-image.png
+!apple-touch-icon.png
+!icon-192.png
+!icon-512.png
 
 # Internal SEO planning docs (would be published by GitHub Pages/Jekyll if committed)
 seo-plan/
